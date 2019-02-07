@@ -1,0 +1,42 @@
+{
+  "name": "preact_ie7",
+  "version": "0.1.0",
+  "description": "Let us sup at the fire, gentlemen, and tell stories of the Internet Explorer of old",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "rollup": "rollup -c",
+    "clean": "rimraf build && rimraf docs && mkdir docs && mkdir build",
+    "deploy": "cp build/pie* docs/ && cp ./src/html/* docs/",
+    "build": "npm run clean && npm run rollup && npm run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StoneCypher/preact_ie7.git"
+  },
+  "keywords": [
+    "nooooooooooooooooooooo"
+  ],
+  "author": "John Haugeland <stonecypher@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StoneCypher/preact_ie7/issues"
+  },
+  "homepage": "https://github.com/StoneCypher/preact_ie7#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-es3": "^1.0.1",
+    "babel-preset-react": "^6.24.1",
+    "preact": "^8.4.2",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-jsx": "^1.0.3",
+    "rollup-plugin-node-resolve": "^4.0.0"
+  }
+}

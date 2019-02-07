@@ -8,6 +8,8 @@
     "clean": "rimraf build && rimraf docs && mkdir docs && mkdir build",
     "deploy": "cp build/pie* docs/ && cp ./src/html/* docs/",
     "build": "npm run clean && npm run rollup && npm run deploy",
+    "serve": "servehere -d docs/",
+    "buildserve": "npm run build && npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,6 +39,7 @@
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-jsx": "^1.0.3",
-    "rollup-plugin-node-resolve": "^4.0.0"
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "servehere": "^1.6.0"
   }
 }

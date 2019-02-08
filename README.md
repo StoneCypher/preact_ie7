@@ -40,9 +40,9 @@ Then I tried [preact](https://preactjs.com/), but I actually couldn't make it wo
 
 So I tried `next` and `nuxt` and `nerv`.  I thought about trying `vue` but I didn't want to have to beat myself up afterwards, so, that was out.  I tried `HTM`, `zeit`, `hyperscript`, `mithril`, and then I got angry at myself for even knowing the name `glimmer`.
 
-`viper`, `stencil`, `dojo 2`, `mobx`, `quasar`, `cxjs`, .
+`viper`, `stencil`, `dojo 2`, `mobx`, `quasar`, `cxjs`, `riot`, and `deku` were right up front that this wasn't an option.
 
-`cyclejs`, `elm`, `angular`, `angulardart`, `compost`, `apprun`, and `w3 components` were not considered, as too different.
+`cyclejs`, `elm`, `amber`, `angular`, `canjs`, `wijmo`, `w2ui`, `angulardart`, `compost`, `marko widgets`, `spree`, `apprun`, `jsblocks`, `blocks.js`, `blok`, `knockout`, `ractive`, `aurelia`, `sencha ext.js`, and `w3 components` were not considered, as too different.
 
 
 
@@ -124,3 +124,5 @@ So that gets it to render.  (Somewhat slowly, because `preact`'s VDOM always thi
 (but really this is a bad idea and only to be used under duress)
 
 Many thanks to @developit from [preact team](https://github.com/preact) for helping me commit this sacreilege.
+
+Try it (on IE7, lol) [here](https://stonecypher.github.io/preact_ie7/index.html).

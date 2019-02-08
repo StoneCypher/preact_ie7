@@ -123,6 +123,6 @@ So that gets it to render.  (Somewhat slowly, because `preact`'s VDOM always thi
 
 (but really this is a bad idea and only to be used under duress)
 
-Many thanks to @developit from [preact team](https://github.com/preact) for helping me commit this sacreilege.
+Many thanks to @developit from [preact team](https://github.com/developit/preact) for helping me commit this sacreilege.
 
 Try it (on IE7, lol) [here](https://stonecypher.github.io/preact_ie7/index.html).

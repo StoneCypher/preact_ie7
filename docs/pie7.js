@@ -699,9 +699,9 @@ var pie7 = (function (exports) {
 	}
 
 	var Widget = function Widget(props) {
-	  return h('div', { className: "widget" }, [h('button', { onclick: function onclick() {
+	  return h('div', { className: "widget" }, ["I am a widget! My foo prop says ", props.foo, ".", h('br'), h('button', { onclick: function onclick() {
 	      return console.log('hi');
-	    } }), "I am a widget! My foo prop says ", props.foo, "."]);
+	    } }, ["I am a button.  Click me for \"hi\" in Console"])]);
 	};
 
 	// first, shim out addEventListener and removeEventListener

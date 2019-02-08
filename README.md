@@ -17,7 +17,7 @@ So the gag is, my buddy had to do some dev, wanted React, but needed to be able 
 
 Sure, it's 2019.  Sure, IE is cancelled.  Sure, Edge is Chrome now.
 
-But Office still embeds MSHTML8.2, which is IE7.
+But Office still embeds MSHTML7.2, which is IE7.
 
 And his stuff needed to work inside of Office.
 

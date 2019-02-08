@@ -7,7 +7,10 @@ import { h } from 'preact';
 
 const Widget = props =>
 
-  <div className="widget">I am a widget! My foo prop says {props.foo}.</div>;
+  <div className="widget">
+    <button onclick={() => console.log('hi')}/>
+    I am a widget! My foo prop says {props.foo}.
+  </div>;
 
 
 

@@ -702,6 +702,18 @@ var pie7 = (function (exports) {
 	  return h('div', { className: "widget" }, ["I am a widget! My foo prop says ", props.foo, "."]);
 	};
 
+	/* fundamentally preact does things with text nodes that ie7 cannot */
+	/* the easiest way out is to replace the creation of a text node */
+	/* lol, hacky and gross */
+
+	document.createTextNode = function (data) {
+
+	  var text = document.createElement('x-text');
+	  text.innerText = data;
+
+	  return text;
+	};
+
 	function begin(target) {
 
 	  var tgt = document.getElementById(target);

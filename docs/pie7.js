@@ -698,11 +698,99 @@ var pie7 = (function (exports) {
 	  return diff(merge, vnode, {}, false, parent, false);
 	}
 
-	var Widget = function Widget(props) {
-	  return h('div', { className: "widget" }, ["I am a widget! My foo prop says ", props.foo, ".", h('br'), h('button', { onclick: function onclick() {
-	      return console.log('hi');
-	    } }, ["I am a button.  Click me for \"hi\" in Console"])]);
+	var classCallCheck = function (instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	};
+
+	var createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];
+	      descriptor.enumerable = descriptor.enumerable || false;
+	      descriptor.configurable = true;
+	      if ("value" in descriptor) descriptor.writable = true;
+	      Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }
+
+	  return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+	    if (staticProps) defineProperties(Constructor, staticProps);
+	    return Constructor;
+	  };
+	}();
+
+	var inherits = function (subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	  }
+
+	  subClass.prototype = Object.create(superClass && superClass.prototype, {
+	    constructor: {
+	      value: subClass,
+	      enumerable: false,
+	      writable: true,
+	      configurable: true
+	    }
+	  });
+	  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	};
+
+	var objectDestructuringEmpty = function (obj) {
+	  if (obj == null) throw new TypeError("Cannot destructure undefined");
+	};
+
+	var possibleConstructorReturn = function (self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }
+
+	  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+	};
+
+	var TodoList = function (_Component) {
+	    inherits(TodoList, _Component);
+
+	    function TodoList() {
+	        classCallCheck(this, TodoList);
+
+	        var _this = possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this));
+
+	        state = { todos: [], text: '' };
+	        return _this;
+	    }
+
+	    createClass(TodoList, [{
+	        key: 'setText',
+	        value: function setText(e) {
+	            this.setState({ text: e.target.value });
+	        }
+	    }, {
+	        key: 'addTodo',
+	        value: function addTodo() {
+	            var _state = this.state,
+	                todos = _state.todos,
+	                text = _state.text;
+
+	            todos = todos.concat({ text: text });
+	            this.setState({ todos: todos, text: '' });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render$$1(_ref, _ref2) {
+	            var todos = _ref2.todos,
+	                text = _ref2.text;
+	            objectDestructuringEmpty(_ref);
+
+	            return h('form', { onSubmit: this.addTodo, action: "javascript:" }, [h('input', { value: text, onInput: this.setText }), h('button', { type: "submit" }, ["Add"]), h('ul', null, [todos.map(function (todo) {
+	                return h('li', null, [todo.text]);
+	            })])]);
+	        }
+	    }]);
+	    return TodoList;
+	}(Component);
 
 	// first, shim out addEventListener and removeEventListener
 
@@ -760,7 +848,7 @@ var pie7 = (function (exports) {
 	function begin(target) {
 
 	  var tgt = document.getElementById(target);
-	  render(Widget({ foo: "bar" }), tgt);
+	  render(TodoList(), tgt);
 	}
 
 	exports.begin = begin;

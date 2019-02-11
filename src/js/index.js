@@ -59,14 +59,14 @@ document.createTextNode = function(data) {
 
 
 import { h, render, Component } from 'preact';
-import { Widget }               from './Widget.jsx';
+import TodoList from './TodoList.jsx';
 
 
 
 function begin(target) {
 
   const tgt = document.getElementById(target);
-  render( <Widget foo="bar"/>, tgt );
+  render( <TodoList/>, tgt );
 
 }
 

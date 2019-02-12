@@ -59,15 +59,11 @@ document.createTextNode = function(data) {
 
 
 import { h, render, Component } from 'preact';
-// import TodoList from './TodoList.jsx';
+import TodoList from './TodoList.jsx';
 
 
 // const TodoList = props => <div>Hiya</div>;
-class TodoList extends Component {
-  render(props, state) {
-    return <div>Hiya!</div>;
-  }
-}
+
 
 
 function begin(target) {

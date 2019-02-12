@@ -702,11 +702,65 @@ var pie7 = (function (exports) {
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) { descriptor.writable = true; } Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) { defineProperties(Constructor.prototype, protoProps); } if (staticProps) { defineProperties(Constructor, staticProps); } return Constructor; }; }();
 
+	function _objectDestructuringEmpty(obj) { if (obj == null) { throw new TypeError("Cannot destructure undefined"); } }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) { Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } }
+
+	var TodoList = function (_Component) {
+	    _inherits(TodoList, _Component);
+
+	    function TodoList() {
+	        _classCallCheck(this, TodoList);
+
+	        var _this = _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this));
+
+	        _this.state = { todos: [], text: '' };
+	        _this.setText = _this.setText.bind(_this);
+	        _this.addTodo = _this.addTodo.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(TodoList, [{
+	        key: 'setText',
+	        value: function setText(e) {
+	            this.setState({ text: e.target.value });
+	        }
+	    }, {
+	        key: 'addTodo',
+	        value: function addTodo() {
+	            var _state = this.state,
+	                todos = _state.todos,
+	                text = _state.text;
+
+	            todos = todos.concat({ text: text });
+	            this.setState({ todos: todos, text: '' });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render$$1(_ref, _ref2) {
+	            var todos = _ref2.todos,
+	                text = _ref2.text;
+
+	            _objectDestructuringEmpty(_ref);
+
+	            return h( 'form', { onSubmit: this.addTodo, action: "javascript:" },
+	              h( 'input', { value: text, onInput: this.setText }),
+	              h( 'button', { type: "submit" }, "Add"),
+	              h( 'ul', null,
+	                  todos.map(function (todo) {
+	                        return h( 'li', null, todo.text );
+	                    })
+	              )
+	          );
+	        }
+	    }]);
+
+	    return TodoList;
+	}(Component);
 
 	// first, shim out addEventListener and removeEventListener
 
@@ -760,29 +814,9 @@ var pie7 = (function (exports) {
 
 	  return text;
 	};
-	// import TodoList from './TodoList.jsx';
-
 
 	// const TodoList = props => <div>Hiya</div>;
 
-	var TodoList = function (_Component) {
-	  _inherits(TodoList, _Component);
-
-	  function TodoList() {
-	    _classCallCheck(this, TodoList);
-
-	    return _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).apply(this, arguments));
-	  }
-
-	  _createClass(TodoList, [{
-	    key: "render",
-	    value: function render$$1(props, state) {
-	      return h( 'div', null, "Hiya!" );
-	    }
-	  }]);
-
-	  return TodoList;
-	}(Component);
 
 	function begin(target) {
 

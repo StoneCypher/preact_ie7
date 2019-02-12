@@ -3,7 +3,9 @@ import { h, Component } from 'preact';
 export default class TodoList extends Component {
   constructor() {
     super();
-    state = { todos: [], text: '' };
+    this.state = { todos: [], text: '' };
+    this.setText = this.setText.bind(this)
+    this.addTodo = this.addTodo.bind(this)
   }
 
   setText(e) {
@@ -28,5 +30,4 @@ export default class TodoList extends Component {
       );
   }
 }
-
 

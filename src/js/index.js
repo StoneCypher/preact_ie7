@@ -62,6 +62,9 @@ import { h, render, Component } from 'preact';
 import TodoList from './TodoList.jsx';
 
 
+// const TodoList = props => <div>Hiya</div>;
+
+
 
 function begin(target) {
 

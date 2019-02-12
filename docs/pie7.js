@@ -698,94 +698,13 @@ var pie7 = (function (exports) {
 	  return diff(merge, vnode, {}, false, parent, false);
 	}
 
-	var classCallCheck = function (instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError("Cannot call a class as a function");
-	  }
-	};
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var createClass = function () {
-	  function defineProperties(target, props) {
-	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];
-	      descriptor.enumerable = descriptor.enumerable || false;
-	      descriptor.configurable = true;
-	      if ("value" in descriptor) descriptor.writable = true;
-	      Object.defineProperty(target, descriptor.key, descriptor);
-	    }
-	  }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	  return function (Constructor, protoProps, staticProps) {
-	    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	    if (staticProps) defineProperties(Constructor, staticProps);
-	    return Constructor;
-	  };
-	}();
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	var inherits = function (subClass, superClass) {
-	  if (typeof superClass !== "function" && superClass !== null) {
-	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	  }
-
-	  subClass.prototype = Object.create(superClass && superClass.prototype, {
-	    constructor: {
-	      value: subClass,
-	      enumerable: false,
-	      writable: true,
-	      configurable: true
-	    }
-	  });
-	  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	};
-
-	var possibleConstructorReturn = function (self, call) {
-	  if (!self) {
-	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	  }
-
-	  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	};
-
-	var TodoList = function (_Component) {
-	    inherits(TodoList, _Component);
-
-	    function TodoList() {
-	        classCallCheck(this, TodoList);
-
-	        var _this = possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this));
-
-	        state = { todos: [], text: '' };
-	        return _this;
-	    }
-
-	    createClass(TodoList, [{
-	        key: 'setText',
-	        value: function setText(e) {
-	            this.setState({ text: e.target.value });
-	        }
-	    }, {
-	        key: 'addTodo',
-	        value: function addTodo() {
-	            var _state = this.state,
-	                todos = _state.todos,
-	                text = _state.text;
-
-	            todos = todos.concat({ text: text });
-	            this.setState({ todos: todos, text: '' });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render$$1(_ref) {
-	            var todos = _ref.todos,
-	                text = _ref.text;
-
-	            return h('form', { onSubmit: this.addTodo, action: "javascript:" }, [h('input', { value: text, onInput: this.setText }), h('button', { type: "submit" }, ["Add"]), h('ul', null, [todos.map(function (todo) {
-	                return h('li', null, [todo.text]);
-	            })])]);
-	        }
-	    }]);
-	    return TodoList;
-	}(Component);
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	// first, shim out addEventListener and removeEventListener
 
@@ -839,6 +758,29 @@ var pie7 = (function (exports) {
 
 	  return text;
 	};
+	// import TodoList from './TodoList.jsx';
+
+
+	// const TodoList = props => <div>Hiya</div>;
+
+	var TodoList = function (_Component) {
+	  _inherits(TodoList, _Component);
+
+	  function TodoList() {
+	    _classCallCheck(this, TodoList);
+
+	    return _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).apply(this, arguments));
+	  }
+
+	  _createClass(TodoList, [{
+	    key: "render",
+	    value: function render$$1(props, state) {
+	      return h('div', null, ["Hiya!"]);
+	    }
+	  }]);
+
+	  return TodoList;
+	}(Component);
 
 	function begin(target) {
 

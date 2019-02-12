@@ -32,9 +32,17 @@ export default {
     jsx( {factory: 'h'} ),
 
     babel({
-      presets: ["es2015-rollup", "react", "es3"],
+
+      presets: [
+        [ "env", { "targets": { "ie": 7 }, "modules": false } ],
+        "react",
+        "es3"
+      ],
+
       exclude: 'node_modules/**'
+
     })
+
   ]
 
 };

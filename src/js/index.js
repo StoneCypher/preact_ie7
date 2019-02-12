@@ -66,7 +66,7 @@ import TodoList from './TodoList.jsx';
 function begin(target) {
 
   const tgt = document.getElementById(target);
-  render( <TodoList/>, tgt );
+  render( <TodoList foo="bar"/>, tgt );
 
 }
 

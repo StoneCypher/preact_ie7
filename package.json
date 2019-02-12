@@ -42,6 +42,7 @@
     "servehere": "^1.6.0"
   },
   "dependencies": {
-    "preact": "^8.4.2"
+    "preact": "^8.4.2",
+    "preact-compat": "^3.18.4"
   }
 }

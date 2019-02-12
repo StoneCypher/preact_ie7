@@ -738,10 +738,6 @@ var pie7 = (function (exports) {
 	  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	};
 
-	var objectDestructuringEmpty = function (obj) {
-	  if (obj == null) throw new TypeError("Cannot destructure undefined");
-	};
-
 	var possibleConstructorReturn = function (self, call) {
 	  if (!self) {
 	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -779,10 +775,9 @@ var pie7 = (function (exports) {
 	        }
 	    }, {
 	        key: 'render',
-	        value: function render$$1(_ref, _ref2) {
-	            var todos = _ref2.todos,
-	                text = _ref2.text;
-	            objectDestructuringEmpty(_ref);
+	        value: function render$$1(_ref) {
+	            var todos = _ref.todos,
+	                text = _ref.text;
 
 	            return h('form', { onSubmit: this.addTodo, action: "javascript:" }, [h('input', { value: text, onInput: this.setText }), h('button', { type: "submit" }, ["Add"]), h('ul', null, [todos.map(function (todo) {
 	                return h('li', null, [todo.text]);
@@ -848,7 +843,7 @@ var pie7 = (function (exports) {
 	function begin(target) {
 
 	  var tgt = document.getElementById(target);
-	  render(TodoList(), tgt);
+	  render(TodoList({ foo: "bar" }), tgt);
 	}
 
 	exports.begin = begin;

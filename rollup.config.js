@@ -3,6 +3,7 @@ import babel       from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs    from 'rollup-plugin-commonjs';
 import jsx         from 'rollup-plugin-jsx';
+import buble       from 'rollup-plugin-buble';
 
 
 
@@ -29,12 +30,23 @@ export default {
       preferBuiltins: false
     }),
 
-    jsx( {factory: 'h'} ),
-
     babel({
-      presets: ["es2015-rollup", "react", "es3"],
+
+      plugins: ["syntax-jsx"],
+
+      presets: [
+        [ "env", { "targets": { "ie": 7 }, "modules": false } ],
+        "es3"
+      ],
+
       exclude: 'node_modules/**'
+
+    }),
+
+    buble({
+      jsx: "h"
     })
+
   ]
 
 };

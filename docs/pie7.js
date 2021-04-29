@@ -10,16 +10,18 @@ var pie7 = (function (exports) {
 	var EMPTY_CHILDREN = [];
 
 	function h(nodeName, attributes) {
+		var arguments$1 = arguments;
+
 		var children = EMPTY_CHILDREN,
 		    lastSimple,
 		    child,
 		    simple,
 		    i;
 		for (i = arguments.length; i-- > 2;) {
-			stack.push(arguments[i]);
+			stack.push(arguments$1[i]);
 		}
 		if (attributes && attributes.children != null) {
-			if (!stack.length) stack.push(attributes.children);
+			if (!stack.length) { stack.push(attributes.children); }
 			delete attributes.children;
 		}
 		while (stack.length) {
@@ -28,10 +30,10 @@ var pie7 = (function (exports) {
 					stack.push(child[i]);
 				}
 			} else {
-				if (typeof child === 'boolean') child = null;
+				if (typeof child === 'boolean') { child = null; }
 
 				if (simple = typeof nodeName !== 'function') {
-					if (child == null) child = '';else if (typeof child === 'number') child = String(child);else if (typeof child !== 'string') simple = false;
+					if (child == null) { child = ''; }else if (typeof child === 'number') { child = String(child); }else if (typeof child !== 'string') { simple = false; }
 				}
 
 				if (simple && lastSimple) {
@@ -63,7 +65,7 @@ var pie7 = (function (exports) {
 
 	function applyRef(ref, value) {
 	  if (ref != null) {
-	    if (typeof ref == 'function') ref(value);else ref.current = value;
+	    if (typeof ref == 'function') { ref(value); }else { ref.current = value; }
 	  }
 	}
 
@@ -82,7 +84,7 @@ var pie7 = (function (exports) {
 	function rerender() {
 		var p;
 		while (p = items.pop()) {
-			if (p._dirty) renderComponent(p);
+			if (p._dirty) { renderComponent(p); }
 		}
 	}
 
@@ -124,11 +126,11 @@ var pie7 = (function (exports) {
 
 	function removeNode(node) {
 		var parentNode = node.parentNode;
-		if (parentNode) parentNode.removeChild(node);
+		if (parentNode) { parentNode.removeChild(node); }
 	}
 
 	function setAccessor(node, name, old, value, isSvg) {
-		if (name === 'className') name = 'class';
+		if (name === 'className') { name = 'class'; }
 
 		if (name === 'key') ; else if (name === 'ref') {
 			applyRef(old, null);
@@ -142,7 +144,7 @@ var pie7 = (function (exports) {
 			if (value && typeof value === 'object') {
 				if (typeof old !== 'string') {
 					for (var i in old) {
-						if (!(i in value)) node.style[i] = '';
+						if (!(i in value)) { node.style[i] = ''; }
 					}
 				}
 				for (var i in value) {
@@ -150,12 +152,12 @@ var pie7 = (function (exports) {
 				}
 			}
 		} else if (name === 'dangerouslySetInnerHTML') {
-			if (value) node.innerHTML = value.__html || '';
+			if (value) { node.innerHTML = value.__html || ''; }
 		} else if (name[0] == 'o' && name[1] == 'n') {
 			var useCapture = name !== (name = name.replace(/Capture$/, ''));
 			name = name.toLowerCase().substring(2);
 			if (value) {
-				if (!old) node.addEventListener(name, eventProxy, useCapture);
+				if (!old) { node.addEventListener(name, eventProxy, useCapture); }
 			} else {
 				node.removeEventListener(name, eventProxy, useCapture);
 			}
@@ -164,14 +166,14 @@ var pie7 = (function (exports) {
 			try {
 				node[name] = value == null ? '' : value;
 			} catch (e) {}
-			if ((value == null || value === false) && name != 'spellcheck') node.removeAttribute(name);
+			if ((value == null || value === false) && name != 'spellcheck') { node.removeAttribute(name); }
 		} else {
 			var ns = isSvg && name !== (name = name.replace(/^xlink:?/, ''));
 
 			if (value == null || value === false) {
-				if (ns) node.removeAttributeNS('http://www.w3.org/1999/xlink', name.toLowerCase());else node.removeAttribute(name);
+				if (ns) { node.removeAttributeNS('http://www.w3.org/1999/xlink', name.toLowerCase()); }else { node.removeAttribute(name); }
 			} else if (typeof value !== 'function') {
-				if (ns) node.setAttributeNS('http://www.w3.org/1999/xlink', name.toLowerCase(), value);else node.setAttribute(name, value);
+				if (ns) { node.setAttributeNS('http://www.w3.org/1999/xlink', name.toLowerCase(), value); }else { node.setAttribute(name, value); }
 			}
 		}
 	}
@@ -191,7 +193,7 @@ var pie7 = (function (exports) {
 	function flushMounts() {
 		var c;
 		while (c = mounts.shift()) {
-			if (c.componentDidMount) c.componentDidMount();
+			if (c.componentDidMount) { c.componentDidMount(); }
 		}
 	}
 
@@ -204,12 +206,12 @@ var pie7 = (function (exports) {
 
 		var ret = idiff(dom, vnode, context, mountAll, componentRoot);
 
-		if (parent && ret.parentNode !== parent) parent.appendChild(ret);
+		if (parent && ret.parentNode !== parent) { parent.appendChild(ret); }
 
 		if (! --diffLevel) {
 			hydrating = false;
 
-			if (!componentRoot) flushMounts();
+			if (!componentRoot) { flushMounts(); }
 		}
 
 		return ret;
@@ -219,7 +221,7 @@ var pie7 = (function (exports) {
 		var out = dom,
 		    prevSvgMode = isSvgMode;
 
-		if (vnode == null || typeof vnode === 'boolean') vnode = '';
+		if (vnode == null || typeof vnode === 'boolean') { vnode = ''; }
 
 		if (typeof vnode === 'string' || typeof vnode === 'number') {
 			if (dom && dom.splitText !== undefined && dom.parentNode && (!dom._component || componentRoot)) {
@@ -229,7 +231,7 @@ var pie7 = (function (exports) {
 			} else {
 				out = document.createTextNode(vnode);
 				if (dom) {
-					if (dom.parentNode) dom.parentNode.replaceChild(out, dom);
+					if (dom.parentNode) { dom.parentNode.replaceChild(out, dom); }
 					recollectNodeTree(dom, true);
 				}
 			}
@@ -254,7 +256,7 @@ var pie7 = (function (exports) {
 				while (dom.firstChild) {
 					out.appendChild(dom.firstChild);
 				}
-				if (dom.parentNode) dom.parentNode.replaceChild(out, dom);
+				if (dom.parentNode) { dom.parentNode.replaceChild(out, dom); }
 
 				recollectNodeTree(dom, true);
 			}
@@ -332,8 +334,8 @@ var pie7 = (function (exports) {
 							if (children[j] !== undefined && isSameNodeType(c = children[j], vchild, isHydrating)) {
 								child = c;
 								children[j] = undefined;
-								if (j === childrenLen - 1) childrenLen--;
-								if (j === min) min++;
+								if (j === childrenLen - 1) { childrenLen--; }
+								if (j === min) { min++; }
 								break;
 							}
 						}
@@ -356,12 +358,12 @@ var pie7 = (function (exports) {
 
 		if (keyedLen) {
 			for (var i in keyed) {
-				if (keyed[i] !== undefined) recollectNodeTree(keyed[i], false);
+				if (keyed[i] !== undefined) { recollectNodeTree(keyed[i], false); }
 			}
 		}
 
 		while (min <= childrenLen) {
-			if ((child = children[childrenLen--]) !== undefined) recollectNodeTree(child, false);
+			if ((child = children[childrenLen--]) !== undefined) { recollectNodeTree(child, false); }
 		}
 	}
 
@@ -370,7 +372,7 @@ var pie7 = (function (exports) {
 		if (component) {
 			unmountComponent(component);
 		} else {
-			if (node['__preactattr_'] != null) applyRef(node['__preactattr_'].ref, null);
+			if (node['__preactattr_'] != null) { applyRef(node['__preactattr_'].ref, null); }
 
 			if (unmountOnly === false || node['__preactattr_'] == null) {
 				removeNode(node);
@@ -436,7 +438,7 @@ var pie7 = (function (exports) {
 	}
 
 	function setComponentProps(component, props, renderMode, context, mountAll) {
-		if (component._disable) return;
+		if (component._disable) { return; }
 		component._disable = true;
 
 		component.__ref = props.ref;
@@ -446,18 +448,18 @@ var pie7 = (function (exports) {
 
 		if (typeof component.constructor.getDerivedStateFromProps === 'undefined') {
 			if (!component.base || mountAll) {
-				if (component.componentWillMount) component.componentWillMount();
+				if (component.componentWillMount) { component.componentWillMount(); }
 			} else if (component.componentWillReceiveProps) {
 				component.componentWillReceiveProps(props, context);
 			}
 		}
 
 		if (context && context !== component.context) {
-			if (!component.prevContext) component.prevContext = component.context;
+			if (!component.prevContext) { component.prevContext = component.context; }
 			component.context = context;
 		}
 
-		if (!component.prevProps) component.prevProps = component.props;
+		if (!component.prevProps) { component.prevProps = component.props; }
 		component.props = props;
 
 		component._disable = false;
@@ -474,7 +476,7 @@ var pie7 = (function (exports) {
 	}
 
 	function renderComponent(component, renderMode, mountAll, isChild) {
-		if (component._disable) return;
+		if (component._disable) { return; }
 
 		var props = component.props,
 		    state = component.state,
@@ -556,7 +558,7 @@ var pie7 = (function (exports) {
 				}
 
 				if (initialBase || renderMode === 1) {
-					if (cbase) cbase._component = null;
+					if (cbase) { cbase._component = null; }
 					base = diff(cbase, rendered, context, mountAll || !isUpdate, initialBase && initialBase.parentNode, true);
 				}
 			}
@@ -600,7 +602,7 @@ var pie7 = (function (exports) {
 
 		while (component._renderCallbacks.length) {
 			component._renderCallbacks.pop().call(component);
-		}if (!diffLevel && !isChild) flushMounts();
+		}if (!diffLevel && !isChild) { flushMounts(); }
 	}
 
 	function buildComponentFromVNode(dom, vnode, context, mountAll) {
@@ -647,7 +649,7 @@ var pie7 = (function (exports) {
 
 		component._disable = true;
 
-		if (component.componentWillUnmount) component.componentWillUnmount();
+		if (component.componentWillUnmount) { component.componentWillUnmount(); }
 
 		component.base = null;
 
@@ -655,7 +657,7 @@ var pie7 = (function (exports) {
 		if (inner) {
 			unmountComponent(inner);
 		} else if (base) {
-			if (base['__preactattr_'] != null) applyRef(base['__preactattr_'].ref, null);
+			if (base['__preactattr_'] != null) { applyRef(base['__preactattr_'].ref, null); }
 
 			component.nextBase = base;
 
@@ -682,13 +684,13 @@ var pie7 = (function (exports) {
 
 	extend(Component.prototype, {
 		setState: function setState(state, callback) {
-			if (!this.prevState) this.prevState = this.state;
+			if (!this.prevState) { this.prevState = this.state; }
 			this.state = extend(extend({}, this.state), typeof state === 'function' ? state(this.state, this.props) : state);
-			if (callback) this._renderCallbacks.push(callback);
+			if (callback) { this._renderCallbacks.push(callback); }
 			enqueueRender(this);
 		},
 		forceUpdate: function forceUpdate(callback) {
-			if (callback) this._renderCallbacks.push(callback);
+			if (callback) { this._renderCallbacks.push(callback); }
 			renderComponent(this, 2);
 		},
 		render: function render() {}
@@ -698,11 +700,67 @@ var pie7 = (function (exports) {
 	  return diff(merge, vnode, {}, false, parent, false);
 	}
 
-	var Widget = function Widget(props) {
-	  return h('div', { className: "widget" }, ["I am a widget! My foo prop says ", props.foo, ".", h('br'), h('button', { onclick: function onclick() {
-	      return console.log('hi');
-	    } }, ["I am a button.  Click me for \"hi\" in Console"])]);
-	};
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) { descriptor.writable = true; } Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) { defineProperties(Constructor.prototype, protoProps); } if (staticProps) { defineProperties(Constructor, staticProps); } return Constructor; }; }();
+
+	function _objectDestructuringEmpty(obj) { if (obj == null) { throw new TypeError("Cannot destructure undefined"); } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) { Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } }
+
+	var TodoList = function (_Component) {
+	    _inherits(TodoList, _Component);
+
+	    function TodoList() {
+	        _classCallCheck(this, TodoList);
+
+	        var _this = _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this));
+
+	        _this.state = { todos: [], text: '' };
+	        _this.setText = _this.setText.bind(_this);
+	        _this.addTodo = _this.addTodo.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(TodoList, [{
+	        key: 'setText',
+	        value: function setText(e) {
+	            this.setState({ text: e.target.value });
+	        }
+	    }, {
+	        key: 'addTodo',
+	        value: function addTodo() {
+	            var _state = this.state,
+	                todos = _state.todos,
+	                text = _state.text;
+
+	            todos = todos.concat({ text: text });
+	            this.setState({ todos: todos, text: '' });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render$$1(_ref, _ref2) {
+	            var todos = _ref2.todos,
+	                text = _ref2.text;
+
+	            _objectDestructuringEmpty(_ref);
+
+	            return h( 'form', { onSubmit: this.addTodo, action: "javascript:" },
+	              h( 'input', { value: text, onInput: this.setText }),
+	              h( 'button', { type: "submit" }, "Add"),
+	              h( 'ul', null,
+	                  todos.map(function (todo) {
+	                        return h( 'li', null, todo.text );
+	                    })
+	              )
+	          );
+	        }
+	    }]);
+
+	    return TodoList;
+	}(Component);
 
 	// first, shim out addEventListener and removeEventListener
 
@@ -757,10 +815,13 @@ var pie7 = (function (exports) {
 	  return text;
 	};
 
+	// const TodoList = props => <div>Hiya</div>;
+
+
 	function begin(target) {
 
 	  var tgt = document.getElementById(target);
-	  render(Widget({ foo: "bar" }), tgt);
+	  render(h( TodoList, { foo: "bar" }), tgt);
 	}
 
 	exports.begin = begin;

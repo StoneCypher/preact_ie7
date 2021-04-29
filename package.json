@@ -28,18 +28,23 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-es3": "^1.0.1",
     "babel-preset-react": "^6.24.1",
-    "preact": "^8.4.2",
     "rimraf": "^2.6.3",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-buble": "^0.19.6",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-node-resolve": "^4.0.0",
     "servehere": "^1.6.0"
+  },
+  "dependencies": {
+    "preact": "^8.4.2",
+    "preact-compat": "^3.18.4"
   }
 }
